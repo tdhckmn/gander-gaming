@@ -2,8 +2,14 @@ import CharacterGenerator from '../components/tools/CharacterGenerator.jsx';
 import SceneGenerator from '../components/tools/SceneGenerator.jsx';
 import AssetGenerator from '../components/tools/AssetGenerator.jsx';
 import NPCGenerator from '../components/tools/NPCGenerator.jsx';
+import { useSEO } from '../hooks/useSEO.js';
 
 export default function Tools() {
+  useSEO({
+    title: 'Grok?! Toolbox — Gander Gaming',
+    description: 'Free online generators for Grok?! 2nd Edition — random characters, scenes, NPCs, and assets for your science fantasy RPG sessions.',
+    canonical: 'https://gandergaming.com/tools',
+  });
   return (
     <section className="section">
       <div className="container">

@@ -664,7 +664,7 @@ img { max-width: 100%; display: block; }
 .result-asset {
   font-family: var(--font-ink);
   font-size: 1.4rem;
-  color: var(--orange);
+  color: var(--text);
 }
 
 .result-section-title {
@@ -723,6 +723,8 @@ img { max-width: 100%; display: block; }
 
 /* Grok page */
 .grok-hero {
+  position: relative;
+  overflow: hidden;
   background-color: var(--purple);
   display: flex;
   flex-direction: column;
@@ -906,4 +908,35 @@ img { max-width: 100%; display: block; }
 
 .cookie-banner-qa p {
   color: #a0aec0;
+}
+
+/* Grok hero orbs — lighter purples so they glow against the purple bg */
+.grok-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #c084fccc 0%, #a855f766 40%, transparent 70%);
+  top: -20%;
+  right: -10%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.grok-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #e9d5ffbb 0%, #c084fc55 40%, transparent 70%);
+  bottom: -15%;
+  left: -5%;
+  animation-delay: -4s;
+  animation-duration: 12s;
+}
+
+.grok-orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #a855f799 0%, transparent 70%);
+  top: 30%;
+  left: 40%;
+  animation-delay: -7s;
+  animation-duration: 14s;
 }

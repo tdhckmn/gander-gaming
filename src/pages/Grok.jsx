@@ -1,6 +1,25 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import heroSrc from '/assets/img/hero-grok.png';
 import { trackEvent } from '../utils/analytics.js';
+import { useSEO } from '../hooks/useSEO.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Game',
+  name: 'Grok?! 2nd Edition',
+  description: 'A rules-light science fantasy RPG set in a post-apocalyptic world of advanced technomancy and boundless plausibility. 200-page full-color hardcover.',
+  url: 'https://gandergaming.com/grok',
+  publisher: { '@type': 'Organization', name: 'Gander Gaming', url: 'https://gandergaming.com' },
+  numberOfPages: 200,
+  bookFormat: 'Hardcover',
+  genre: ['Science Fantasy', 'Tabletop RPG'],
+  offers: [
+    { '@type': 'Offer', url: 'https://www.kickstarter.com/projects/gandergaming/grok-2nd-edition', name: 'Kickstarter' },
+    { '@type': 'Offer', url: 'https://www.drivethrurpg.com/en/publisher/18836/gander-gaming', name: 'DriveThruRPG' },
+    { '@type': 'Offer', url: 'https://gander-gaming.itch.io', name: 'itch.io' },
+  ],
+};
 
 const loreLines = [
   '…was once a haven of trans-dimensional migrants and a hub of advanced technomancy.',
@@ -19,12 +38,29 @@ const touchstones = [
 
 
 export default function Grok() {
+  useSEO({
+    title: 'Grok?! 2nd Edition — Gander Gaming',
+    description: 'A rules-light science fantasy RPG set in a post-apocalyptic world of advanced technomancy and boundless plausibility. 200-page full-color hardcover.',
+    canonical: 'https://gandergaming.com/grok',
+  });
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   return (
     <>
       {/* Hero */}
       <div className="grok-hero">
-        <img className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" />
-        <div className="grok-hero-content">
+        <div className="hero-orb grok-orb-1" aria-hidden="true" />
+        <div className="hero-orb grok-orb-2" aria-hidden="true" />
+        <div className="hero-orb grok-orb-3" aria-hidden="true" />
+        <img className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" style={{ position: 'relative', zIndex: 1 }} />
+        <div className="grok-hero-content" style={{ position: 'relative', zIndex: 1 }}>
           <p>A science-fantasy RPG of post-apocalyptic technomancy and boundless plausibility.</p>
         </div>
       </div>

@@ -2,8 +2,41 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import heroSrc from '/assets/img/hero-gander-gaming.png';
 import { trackEvent } from '../utils/analytics.js';
+import { useSEO } from '../hooks/useSEO.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Gander Gaming',
+  url: 'https://gandergaming.com',
+  logo: 'https://gandergaming.com/assets/img/logo-gander-gaming.png',
+  founder: { '@type': 'Person', name: 'Lester Burton' },
+  foundingDate: '2021',
+  email: 'Lester@gandergaming.com',
+  sameAs: [
+    'https://www.facebook.com/Lestortoise',
+    'https://bsky.app/profile/gandergaming.bsky.social',
+    'https://www.youtube.com/GanderGamingCo',
+    'https://gander-gaming.itch.io',
+    'https://www.drivethrurpg.com/en/publisher/18836/gander-gaming',
+  ],
+};
 
 export default function Home() {
+  useSEO({
+    title: 'Gander Gaming — Indie RPG Publisher',
+    description: 'Gander Gaming is an indie game publishing company founded by Lester Burton. Home of Grok?! 2nd Edition, a rules-light science fantasy RPG.',
+    canonical: 'https://gandergaming.com/',
+  });
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   const heroImgRef = useRef(null);
   const pageBodyRef = useRef(null);
 
