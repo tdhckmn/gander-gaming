@@ -44,29 +44,6 @@ You are building a Firebase web application in React. The purposes of this web a
     "preview": "vite preview",
     "deploy": "vite build && firebase deploy"
 
-### Firebase 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyA-KmG_sqZwr3IUat7x2n6iTco0bMRfCF0",
-  authDomain: "gander-gaming.firebaseapp.com",
-  projectId: "gander-gaming",
-  storageBucket: "gander-gaming.firebasestorage.app",
-  messagingSenderId: "121223925013",
-  appId: "1:121223925013:web:9944f4bdfa8803afb62d1c",
-  measurementId: "G-KKHQVZF916"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 ### Styles
 Use inspiration-styles.css to create a new styles.css for this project without unneded things, as the inpsiration file came from another project which had valid colors but we decided to start new here.
 
