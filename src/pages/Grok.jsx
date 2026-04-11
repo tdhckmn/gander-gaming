@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import heroSrc from '/assets/img/hero-grok.png';
 import { trackEvent } from '../utils/analytics.js';
@@ -38,6 +38,9 @@ const touchstones = [
 
 
 export default function Grok() {
+  const heroImgRef = useRef(null);
+  const pageBodyRef = useRef(null);
+
   useSEO({
     title: 'Grok?! 2nd Edition — Gander Gaming',
     description: 'A rules-light science fantasy RPG set in a post-apocalyptic world of advanced technomancy and boundless plausibility. 200-page full-color hardcover.',
@@ -52,6 +55,24 @@ export default function Grok() {
     return () => document.head.removeChild(script);
   }, []);
 
+  useEffect(() => {
+    const heroImg = heroImgRef.current;
+    const pageBody = pageBodyRef.current;
+    if (!heroImg || !pageBody) return;
+
+    const heroHeight = heroImg.parentElement?.offsetHeight ?? window.innerHeight;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      heroImg.style.transform = `translateY(-${scrollY * 0.3}px)`;
+      const progress = Math.max(0, Math.min(1, scrollY / (heroHeight * 0.65)));
+      pageBody.style.transform = `translateY(${(1 - progress) * 60}px)`;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {/* Hero */}
@@ -59,12 +80,13 @@ export default function Grok() {
         <div className="hero-orb grok-orb-1" aria-hidden="true" />
         <div className="hero-orb grok-orb-2" aria-hidden="true" />
         <div className="hero-orb grok-orb-3" aria-hidden="true" />
-        <img className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" style={{ position: 'relative', zIndex: 1 }} />
+        <img ref={heroImgRef} className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" style={{ position: 'relative', zIndex: 1 }} />
         <div className="grok-hero-content" style={{ position: 'relative', zIndex: 1 }}>
           <p>A science-fantasy RPG of post-apocalyptic technomancy and boundless plausibility.</p>
         </div>
       </div>
 
+      <div className="page-body" ref={pageBodyRef}>
       {/* Lore */}
       <section className="section">
         <div className="container">
@@ -145,6 +167,7 @@ export default function Grok() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

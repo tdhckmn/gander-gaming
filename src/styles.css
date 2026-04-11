@@ -723,24 +723,27 @@ img { max-width: 100%; display: block; }
 
 /* Grok page */
 .grok-hero {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: calc(100vh - 64px);
   overflow: hidden;
   background-color: var(--purple);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 3rem 2rem 2.5rem;
-  gap: 1.75rem;
+  padding: 1rem 2rem 5rem;
+  gap: 2rem;
 }
 
 .grok-hero-img {
-  max-width: 420px;
+  max-width: 620px;
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45);
+  will-change: transform;
 }
 
 .grok-hero-content {
@@ -910,11 +913,11 @@ img { max-width: 100%; display: block; }
   color: #a0aec0;
 }
 
-/* Grok hero orbs — lighter purples so they glow against the purple bg */
+/* Grok hero orbs — orange glow against the purple bg */
 .grok-orb-1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #c084fccc 0%, #a855f766 40%, transparent 70%);
+  background: radial-gradient(circle, #e8a020cc 0%, #c8780066 40%, transparent 70%);
   top: -20%;
   right: -10%;
   animation-delay: 0s;
@@ -924,7 +927,7 @@ img { max-width: 100%; display: block; }
 .grok-orb-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, #e9d5ffbb 0%, #c084fc55 40%, transparent 70%);
+  background: radial-gradient(circle, #c87800bb 0%, #e8a02055 40%, transparent 70%);
   bottom: -15%;
   left: -5%;
   animation-delay: -4s;
@@ -934,7 +937,7 @@ img { max-width: 100%; display: block; }
 .grok-orb-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #a855f799 0%, transparent 70%);
+  background: radial-gradient(circle, #e8a02099 0%, transparent 70%);
   top: 30%;
   left: 40%;
   animation-delay: -7s;

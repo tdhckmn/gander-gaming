@@ -4,6 +4,18 @@ export function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// Returns "an" before vowel sounds, "a" otherwise.
+export function article(word) {
+  return /^[aeiou]/i.test(word.trim()) ? 'an' : 'a';
+}
+
+// Prefixes a word with the correct indefinite article, capitalised if cap=true.
+export function withArticle(word, cap = false) {
+  const art = article(word);
+  const result = `${art} ${word}`;
+  return cap ? result.charAt(0).toUpperCase() + result.slice(1) : result;
+}
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -216,9 +228,11 @@ export function generateCharacter() {
   if (miscType === 'magic') {
     misc = `The ${pick(MAGIC_PT1)} of ${pick(MAGIC_PT2)} ${pick(MAGIC_PT3)}`;
   } else if (miscType === 'vehicle') {
-    misc = `A(n) ${pick(VEHICLE_PT1)} ${pick(VEHICLE_PT2)} with a(n) ${pick(VEHICLE_PT3)}`;
+    const vPt1 = pick(VEHICLE_PT1); const vPt3 = pick(VEHICLE_PT3);
+    misc = `${withArticle(vPt1, true)} ${pick(VEHICLE_PT2)} with ${withArticle(vPt3)}`;
   } else {
-    misc = `A(n) ${pick(COMPANION_PT1)} ${pick(COMPANION_PT2)} trained as a ${pick(COMPANION_PT3)}`;
+    const cPt1 = pick(COMPANION_PT1); const cPt3 = pick(COMPANION_PT3);
+    misc = `${withArticle(cPt1, true)} ${pick(COMPANION_PT2)} trained as ${withArticle(cPt3)}`;
   }
 
   return {
@@ -317,8 +331,8 @@ export function generateScene() {
   const verb = pick(EVENT_VERB);
   const what = pick(EVENT_WHAT);
 
-  const locale = `A(n) ${adj} ${place} with ${feature}`;
-  const event = `A(n) ${who} is ${verb} a(n) ${what}`;
+  const locale = `${withArticle(adj, true)} ${place} with ${feature}`;
+  const event = `${withArticle(who, true)} is ${verb} ${withArticle(what)}`;
   return { locale, event, scene: `In ${locale}, ${event}.` };
 }
 
