@@ -13,7 +13,7 @@ export default function Tools() {
           </span>
           <h1>Tools</h1>
           <p style={{ color: 'var(--text-muted)', maxWidth: 560, marginTop: '0.5rem' }}>
-            Random generators for your Grok?! sessions. Roll once, roll often — nearly anything is plausible.
+            Random generators for your Grok?! sessions. Roll once, roll often.<br />Nearly anything is plausible.
           </p>
         </div>
 

@@ -9,10 +9,10 @@ export default function AssetGenerator() {
       <div className="tool-header">
         <h2>Random Asset</h2>
         <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-          One weird, wonderful item from the asset table.
+          One weird, wonderful... thing?!
         </p>
       </div>
-      <button className="btn btn-outline" onClick={() => setAsset(generateAsset())}>
+      <button className="btn btn-primary" onClick={() => setAsset(generateAsset())}>
         Roll Asset
       </button>
 

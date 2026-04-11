@@ -18,8 +18,7 @@ export default function SceneGenerator() {
 
       {scene && (
         <div className="tool-result">
-          <p className="result-scene">{scene.scene}</p>
-          <div style={{ display: 'flex', gap: '2rem', marginTop: '1.25rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             <div className="result-item">
               <span className="result-label">Locale</span>
               <span className="result-value">{scene.locale}</span>

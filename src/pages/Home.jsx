@@ -43,6 +43,11 @@ export default function Home() {
               <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 13.5l-3-4v4H8V8.5h2v4l3-4h2.5l-3.5 4.5 3.5 4.5H13z"/>
             </svg>
           </a>
+          <a href="https://bsky.app/profile/gandergaming.bsky.social" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="Bluesky">
+            <svg viewBox="0 0 360 320" fill="currentColor" width="22" height="22">
+              <path d="M180 142c-16.3-31.7-60.7-90.8-102-120C38 2 14.3 5.1 6 15 0 23.1 0 39.6 0 55.6 0 96.5 21.5 162 47.7 162H48c-26.5 0-46.9 37.6-46.9 70.5C1.1 266.8 19.8 295 60 295c41 0 67.7-24.9 107.9-124.5 3.6-8.7 7.1-18 10.6-27.5 3.5 9.5 7 18.8 10.6 27.5C229.3 270.1 256 295 297 295c40.2 0 58.9-28.2 58.9-62.5 0-32.9-20.4-70.5-46.9-70.5h.3C335.5 162 357 96.5 357 55.6c0-16 0-32.5-6-40.6-8.3-9.9-32-13-72-7C236.7 51.2 196.3 110.3 180 142z"/>
+            </svg>
+          </a>
         </div>
         <div className="hero-overlay" />
       </div>
@@ -92,7 +97,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="btn btn-outline"
                   >
-                    Back on Kickstarter
+                    Now on Kickstarter
                   </a>
                 </div>
               </div>

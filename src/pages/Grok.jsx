@@ -16,18 +16,6 @@ const touchstones = [
   'The Labyrinth', 'Wizards',
 ];
 
-const includes = [
-  'Refined Core Rules',
-  'Expanded Setting',
-  'Full Campaign',
-  'Solo Rules',
-  'GM Toolkits',
-  'GM Screen',
-  'Pregen Character Pad',
-  'Zine SRD',
-  'Coloring Book',
-  'Dice Set',
-];
 
 export default function Grok() {
   return (
@@ -36,7 +24,6 @@ export default function Grok() {
       <div className="grok-hero">
         <img className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" />
         <div className="grok-hero-content">
-          <h1>Planet Grok</h1>
           <p>A science-fantasy RPG of post-apocalyptic technomancy and boundless plausibility.</p>
         </div>
       </div>
@@ -66,12 +53,11 @@ export default function Grok() {
                 of advanced technomancy and boundless plausibility. Nearly anything is plausible.
               </p>
               <p style={{ color: 'var(--text-muted)' }}>
-                Grok?! is 100% made by free-range humans. Grok — both the term and the game — were around
-                long before anyone else tried to claim it. We're not letting them have it.
-              </p>
-              <p style={{ color: 'var(--text-muted)' }}>
                 The 2nd Edition is a <strong>200-page full-color hardcover</strong>, complete with everything
                 you need to explore, survive, and thrive on Planet Grok.
+              </p>
+              <p style={{ color: 'var(--text-muted)' }}>
+                Grok?! is 100% made by free-range humans.
               </p>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '2rem' }}>
                 <a
@@ -80,31 +66,18 @@ export default function Grok() {
                   rel="noopener noreferrer"
                   className="btn btn-purple btn-lg"
                 >
-                  Back on Kickstarter
+                  Now on Kickstarter
                 </a>
                 <Link to="/tools" className="btn btn-outline btn-lg">Try the Tools</Link>
               </div>
             </div>
 
-            <div>
-              <div className="card card-raised" style={{ marginBottom: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>What's Included</h3>
-                <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem 1rem' }}>
-                  {includes.map(item => (
-                    <li key={item} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <span style={{ color: 'var(--purple)', fontWeight: 700 }}>✦</span> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Inspirational Touchstones</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {touchstones.map(t => (
-                    <span key={t} className="tag tag-purple">{t}</span>
-                  ))}
-                </div>
+            <div className="card">
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Inspirational Touchstones</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {touchstones.map(t => (
+                  <span key={t} className="tag tag-purple">{t}</span>
+                ))}
               </div>
             </div>
           </div>
