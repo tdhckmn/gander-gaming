@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { generateScene } from '../../data/tables.js';
+import { usePersisted } from '../../hooks/usePersisted.js';
+import { trackEvent } from '../../utils/analytics.js';
 
 export default function SceneGenerator() {
-  const [scene, setScene] = useState(null);
+  const [scene, setScene] = usePersisted('grok-scene');
 
   return (
     <div className="tool-section">
@@ -12,7 +13,7 @@ export default function SceneGenerator() {
           A locale and an event combined into an opening situation.
         </p>
       </div>
-      <button className="btn btn-primary" onClick={() => setScene(generateScene())}>
+      <button className="btn btn-primary" onClick={() => { setScene(generateScene()); trackEvent('roll_scene'); }}>
         Roll Scene
       </button>
 

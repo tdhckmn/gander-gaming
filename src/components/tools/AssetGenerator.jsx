@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { generateAsset } from '../../data/tables.js';
+import { usePersisted } from '../../hooks/usePersisted.js';
+import { trackEvent } from '../../utils/analytics.js';
 
 export default function AssetGenerator() {
-  const [asset, setAsset] = useState(null);
+  const [asset, setAsset] = usePersisted('grok-asset');
 
   return (
     <div className="tool-section">
@@ -12,7 +13,7 @@ export default function AssetGenerator() {
           One weird, wonderful... thing?!
         </p>
       </div>
-      <button className="btn btn-primary" onClick={() => setAsset(generateAsset())}>
+      <button className="btn btn-primary" onClick={() => { setAsset(generateAsset()); trackEvent('roll_asset'); }}>
         Roll Asset
       </button>
 

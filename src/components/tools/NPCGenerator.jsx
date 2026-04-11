@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { generateNPC } from '../../data/tables.js';
+import { usePersisted } from '../../hooks/usePersisted.js';
+import { trackEvent } from '../../utils/analytics.js';
 
 export default function NPCGenerator() {
-  const [npc, setNPC] = useState(null);
+  const [npc, setNPC] = usePersisted('grok-npc');
 
   return (
     <div className="tool-section">
@@ -12,7 +13,7 @@ export default function NPCGenerator() {
           A name, an appearance, and a background — enough to make them memorable.
         </p>
       </div>
-      <button className="btn btn-purple" onClick={() => setNPC(generateNPC())}>
+      <button className="btn btn-purple" onClick={() => { setNPC(generateNPC()); trackEvent('roll_npc'); }}>
         Roll NPC
       </button>
 

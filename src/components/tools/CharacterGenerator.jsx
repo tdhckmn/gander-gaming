@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import { generateCharacter } from '../../data/tables.js';
+import { exportCharacterPDF } from '../../utils/exportCharacterPDF.js';
+import { usePersisted } from '../../hooks/usePersisted.js';
+import { trackEvent } from '../../utils/analytics.js';
 
 export default function CharacterGenerator() {
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = usePersisted('grok-character');
 
   return (
     <div className="tool-section">
@@ -12,12 +14,20 @@ export default function CharacterGenerator() {
           Name, attributes, traits, and a full set of starting assets.
         </p>
       </div>
-      <button className="btn btn-purple" onClick={() => setCharacter(generateCharacter())}>
+      <button className="btn btn-purple" onClick={() => { const c = generateCharacter(); setCharacter(c); trackEvent('roll_character'); }}>
         Roll Character
       </button>
 
       {character && (
-        <div className="tool-result">
+        <div className="tool-result" style={{ position: 'relative' }}>
+          <button
+            className="btn btn-outline"
+            onClick={() => { exportCharacterPDF(character); trackEvent('download_character_pdf'); }}
+            style={{ position: 'absolute', top: '1rem', right: '1rem', fontSize: '0.8rem', padding: '0.35rem 0.85rem' }}
+            title="Download character sheet PDF"
+          >
+            ↓ PDF
+          </button>
           <div className="result-name">{character.name}</div>
 
           <p className="result-section-title">Attributes</p>
@@ -57,7 +67,7 @@ export default function CharacterGenerator() {
               { label: 'Accessory', value: character.assets.accessory },
               { label: 'Weapon', value: character.assets.weapon },
               { label: 'Oddity', value: character.assets.oddity },
-              { label: `Misc (${character.assets.miscType})`, value: character.assets.misc },
+              { label: `Misc: ${character.assets.miscType.charAt(0).toUpperCase() + character.assets.miscType.slice(1)}`, value: character.assets.misc },
             ].map(({ label, value }) => (
               <div key={label} className="result-item">
                 <span className="result-label">{label}</span>

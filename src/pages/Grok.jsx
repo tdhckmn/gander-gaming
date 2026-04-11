@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import heroSrc from '/assets/img/hero-grok.png';
+import { trackEvent } from '../utils/analytics.js';
 
 const loreLines = [
   '…was once a haven of trans-dimensional migrants and a hub of advanced technomancy.',
@@ -65,10 +66,13 @@ export default function Grok() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-purple btn-lg"
+                  onClick={() => trackEvent('click_cta', { label: 'kickstarter', source: 'grok' })}
                 >
                   Now on Kickstarter
                 </a>
-                <Link to="/tools" className="btn btn-outline btn-lg">Try the Tools</Link>
+                <Link to="/tools" className="btn btn-outline btn-lg" onClick={() => trackEvent('click_cta', { label: 'try_tools', source: 'grok' })}>
+                  Try the Tools
+                </Link>
               </div>
             </div>
 
