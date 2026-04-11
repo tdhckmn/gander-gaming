@@ -34,11 +34,8 @@ export default function Grok() {
     <>
       {/* Hero */}
       <div className="grok-hero">
-        <img className="grok-hero-img" src={heroSrc} alt="Planet Grok" />
+        <img className="grok-hero-img" src={heroSrc} alt="Grok?! 2nd Edition" />
         <div className="grok-hero-content">
-          <span className="tag tag-purple" style={{ marginBottom: '1rem', alignSelf: 'flex-start', background: 'rgba(234,213,238,0.2)', color: '#e0c0e8' }}>
-            2nd Edition
-          </span>
           <h1>Planet Grok</h1>
           <p>A science-fantasy RPG of post-apocalyptic technomancy and boundless plausibility.</p>
         </div>
