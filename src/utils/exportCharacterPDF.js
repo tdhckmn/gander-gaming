@@ -19,6 +19,22 @@ const PILL_BOT     = 2.5; // space below last value line
 const PILL_COL_GAP = 4;   // gap between two columns
 const PILL_ROW_GAP = 3;   // gap between rows
 
+async function loadFont(doc, path, filename, family) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) return 'helvetica';
+    const buf = await res.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    const b64 = btoa(binary);
+    doc.addFileToVFS(filename, b64);
+    doc.addFont(filename, family, 'normal');
+    return family;
+  } catch {
+    return 'helvetica';
+  }
+}
 
 function sectionLabel(doc, x, y, label, contentW) {
   doc.setFont('helvetica', 'bold');
@@ -99,15 +115,17 @@ function dieBadge(doc, cx, cy, label, die, serifFont) {
   doc.text(label, cx, cy + r + 4.5, { align: 'center' });
 }
 
-export function exportCharacterPDF(character) {
+export async function exportCharacterPDF(character) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
   const pageW   = 210;
   const margin  = 20;
   const contentW = pageW - margin * 2;
   const colW    = (contentW - PILL_COL_GAP) / 2;
 
-  const serifFont = 'helvetica';
-  const inkFont   = 'helvetica';
+  const [serifFont, inkFont] = await Promise.all([
+    loadFont(doc, '/fonts/DevinneSwash.ttf', 'DevinneSwash.ttf', 'DevinneSwash'),
+    loadFont(doc, '/fonts/Inkfree.ttf',      'Inkfree.ttf',      'Inkfree'),
+  ]);
 
   // ── Header bar ──────────────────────────────────────────────────────────────
   doc.setFillColor(...PURPLE);
