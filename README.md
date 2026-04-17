@@ -57,6 +57,8 @@ Feel free to change `utm_campaign` to something like `grok2e_launch` or `grok2e_
 | Discord | `discord` | `social` |
 | Reddit | `reddit` | `social` |
 | Facebook | `facebook` | `social` |
+
+> **Facebook note:** GA4 can automatically detect when traffic comes from Facebook without needing UTM params. If you're posting your link as the official website link on your Facebook page, it's worth leaving the params off — Facebook displays the full URL including all the `?utm_...` stuff, which looks messy to visitors. UTM links are better suited to individual posts or ad campaigns where the URL isn't front-and-centre.
 | Bluesky | `bluesky` | `social` |
 
 In GA4, go to **Reports → Acquisition → Traffic Acquisition** and filter by `Session source / medium` to see breakdowns per channel.
