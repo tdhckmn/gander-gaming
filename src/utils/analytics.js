@@ -1,6 +1,8 @@
 const GA_ID = import.meta.env.VITE_FIREBASE_MEASUREMENT_ID;
 const QA_KEY = 'grok-qa';
 const CONSENT_KEY = 'grok-cookie-consent';
+const UTM_SESSION_KEY = 'grok-utms';
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
 // ── QA mode ──────────────────────────────────────────────────────────────────
 // Called once on app boot. Detects ?qa=true and persists to localStorage.
@@ -43,9 +45,35 @@ function loadGA() {
   document.head.appendChild(script);
 }
 
+// ── UTM capture ───────────────────────────────────────────────────────────────
+// Called once on app boot. Reads UTM params from the landing URL and stores
+// them in sessionStorage so they survive SPA navigation within the session.
+export function captureUTMParams() {
+  const params = new URLSearchParams(window.location.search);
+  const utms = {};
+  UTM_KEYS.forEach(key => {
+    if (params.get(key)) utms[key] = params.get(key);
+  });
+  if (Object.keys(utms).length > 0) {
+    sessionStorage.setItem(UTM_SESSION_KEY, JSON.stringify(utms));
+  }
+}
+
+export function getStoredUTMs() {
+  try { return JSON.parse(sessionStorage.getItem(UTM_SESSION_KEY) || '{}'); }
+  catch { return {}; }
+}
+
+function utmSearchFromSession() {
+  const utms = getStoredUTMs();
+  if (!Object.keys(utms).length) return '';
+  return '?' + new URLSearchParams(utms).toString();
+}
+
 // Call on app boot — only loads GA if consent was previously accepted.
 export function initAnalytics() {
   detectQAMode();
+  captureUTMParams();
   if (!isQAMode() && getConsent() === 'accepted') {
     loadGA();
   }
@@ -63,13 +91,14 @@ export function declineAnalytics() {
 }
 
 // ── Tracking helpers ──────────────────────────────────────────────────────────
-export function trackPageView(path) {
+export function trackPageView(path, search = '') {
+  const fullUrl = `https://gandergaming.com${path}${search || utmSearchFromSession()}`;
   if (isQAMode()) {
-    console.log('[QA Analytics] page_view', { page_path: path });
+    console.log('[QA Analytics] page_view', { page_path: path, page_location: fullUrl });
     return;
   }
   if (!initialized) return;
-  window.gtag('event', 'page_view', { page_path: path });
+  window.gtag('event', 'page_view', { page_path: path, page_location: fullUrl });
 }
 
 export function trackEvent(name, params = {}) {
