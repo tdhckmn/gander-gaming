@@ -45,6 +45,7 @@ export default function Grok() {
     title: 'Grok?! 2nd Edition — Gander Gaming',
     description: 'A rules-light science fantasy RPG set in a post-apocalyptic world of advanced technomancy and boundless plausibility. 200-page full-color hardcover.',
     canonical: 'https://gandergaming.com/grok',
+    image: 'https://gandergaming.com/assets/img/share-grok.png',
   });
 
   useEffect(() => {

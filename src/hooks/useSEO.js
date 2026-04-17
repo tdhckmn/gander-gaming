@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export function useSEO({ title, description, canonical }) {
+export function useSEO({ title, description, canonical, image }) {
   useEffect(() => {
     document.title = title;
 
@@ -16,6 +16,14 @@ export function useSEO({ title, description, canonical }) {
     let ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) ogUrl.setAttribute('content', canonical);
 
+    if (image) {
+      let ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogImage) ogImage.setAttribute('content', image);
+
+      let twImage = document.querySelector('meta[name="twitter:image"]');
+      if (twImage) twImage.setAttribute('content', image);
+    }
+
     let twTitle = document.querySelector('meta[name="twitter:title"]');
     if (twTitle) twTitle.setAttribute('content', title);
 
@@ -24,5 +32,5 @@ export function useSEO({ title, description, canonical }) {
 
     let canon = document.querySelector('link[rel="canonical"]');
     if (canon) canon.setAttribute('href', canonical);
-  }, [title, description, canonical]);
+  }, [title, description, canonical, image]);
 }
