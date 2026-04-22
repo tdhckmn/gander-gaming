@@ -1,3 +1,4 @@
+import DiceRoller from '../components/tools/DiceRoller.jsx';
 import CharacterGenerator from '../components/tools/CharacterGenerator.jsx';
 import SceneGenerator from '../components/tools/SceneGenerator.jsx';
 import AssetGenerator from '../components/tools/AssetGenerator.jsx';
@@ -24,6 +25,8 @@ export default function Tools() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+          <DiceRoller />
+          <hr className="divider" />
           <CharacterGenerator />
           <hr className="divider" />
           <SceneGenerator />

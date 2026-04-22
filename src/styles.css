@@ -913,6 +913,309 @@ img { max-width: 100%; display: block; }
   color: #a0aec0;
 }
 
+/* ── Dice Roller ─────────────────────────────────────────────────────────────── */
+
+.dice-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.die-card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 68px;
+  transition: border-color 0.15s;
+}
+
+.die-card-label {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.die-card-stepper {
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+
+.die-card-btn {
+  flex: 1;
+  height: 28px;
+  background: var(--surface-raised);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-muted);
+  transition: background 0.12s, color 0.12s;
+}
+
+.die-card-btn:hover:not(:disabled) {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.die-card-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.die-card-count {
+  font-family: var(--font-ink);
+  font-size: 1rem;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transition: color 0.15s;
+  color: var(--text-muted);
+}
+
+.dice-pool-summary-text {
+  font-family: var(--font-ink);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.dice-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.die-btn {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  border-style: solid;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.die-btn--sm {
+  width: 48px;
+  height: 48px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.die-btn:hover {
+  filter: brightness(1.15);
+}
+
+.dice-pool-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.dice-pool-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 3rem;
+}
+
+.dice-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.stepper-btn {
+  background: var(--surface-raised);
+  border: none;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s;
+  line-height: 1;
+}
+
+.stepper-btn:hover:not(:disabled) {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.stepper-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.stepper-value {
+  font-family: var(--font-ink);
+  font-size: 1.1rem;
+  min-width: 2rem;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  padding: 0 0.25rem;
+  line-height: 36px;
+}
+
+.dice-pool-summary {
+  font-family: var(--font-ink);
+  font-size: 1.2rem;
+}
+
+.dice-mode-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.dice-mode-btn {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dice-mode-btn:hover {
+  border-color: var(--text-light);
+  color: var(--text);
+}
+
+.dice-mode-btn--active {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+.dice-push-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.dice-push-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-family: var(--font-sans);
+}
+
+.dice-pool-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.dice-pool-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.15s;
+}
+
+.dice-pool-result--chosen {
+  border-width: 2px;
+  background: var(--surface-raised);
+}
+
+.dice-pool-result--eliminated {
+  opacity: 0.35;
+}
+
+.dice-chosen-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+}
+
+.dice-result-rolls {
+  font-family: var(--font-ink);
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.dice-chain-sep {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.dice-equals {
+  color: var(--text-muted);
+  margin: 0 0.15rem;
+}
+
+.dice-explode-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  vertical-align: middle;
+  font-family: var(--font-sans);
+}
+
+.dice-total {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.dice-total strong,
+.dice-total-num {
+  font-family: var(--font-ink);
+  font-size: 1.5rem;
+}
+
 /* Grok hero orbs — orange glow against the purple bg */
 .grok-orb-1 {
   width: 600px;
