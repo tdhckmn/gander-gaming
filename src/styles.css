@@ -721,6 +721,48 @@ img { max-width: 100%; display: block; }
   margin-bottom: 3rem;
 }
 
+/* Tool tabs */
+.tool-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 2.5rem;
+  padding-bottom: 0;
+}
+
+.tool-tab {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  border-radius: 0;
+}
+
+.tool-tab:hover {
+  color: var(--text);
+}
+
+.tool-tab--active {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+.tool-tab-panel {
+  min-height: 400px;
+}
+
+.tool-tab-panel[hidden] {
+  display: none;
+}
+
 /* Grok page */
 .grok-hero {
   position: sticky;
@@ -915,82 +957,7 @@ img { max-width: 100%; display: block; }
 
 /* ── Dice Roller ─────────────────────────────────────────────────────────────── */
 
-.dice-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.die-card {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  width: 68px;
-  transition: border-color 0.15s;
-}
-
-.die-card-label {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 700;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, color 0.15s;
-}
-
-.die-card-stepper {
-  display: flex;
-  border-top: 1px solid var(--border);
-}
-
-.die-card-btn {
-  flex: 1;
-  height: 28px;
-  background: var(--surface-raised);
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--text-muted);
-  transition: background 0.12s, color 0.12s;
-}
-
-.die-card-btn:hover:not(:disabled) {
-  background: var(--bg-alt);
-  color: var(--text);
-}
-
-.die-card-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.die-card-count {
-  font-family: var(--font-ink);
-  font-size: 1rem;
-  width: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  transition: color 0.15s;
-  color: var(--text-muted);
-}
-
-.dice-pool-summary-text {
-  font-family: var(--font-ink);
-  font-size: 1.15rem;
-  color: var(--text);
-  margin-top: 0.75rem;
-  margin-bottom: 0;
-}
-
+/* Die selector */
 .dice-selector {
   display: flex;
   flex-wrap: wrap;
@@ -1012,34 +979,65 @@ img { max-width: 100%; display: block; }
   justify-content: center;
 }
 
-.die-btn--sm {
-  width: 48px;
-  height: 48px;
-  font-size: 0.9rem;
-  border-radius: 8px;
-}
-
 .die-btn:hover {
   filter: brightness(1.15);
 }
 
-.dice-pool-row {
+/* Advantage / Disadvantage */
+.adv-dis-row {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
 }
 
-.dice-pool-label {
+.adv-dis-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.adv-dis-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.adv-dis-label--adv { color: #276749; }
+.adv-dis-label--dis { color: #c53030; }
+
+.adv-dis-net-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  justify-content: center;
+  padding-top: 1.4rem;
+}
+
+.adv-dis-net {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  font-weight: 600;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  width: 3rem;
 }
 
+.adv-dis-clear {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.adv-dis-clear:hover { color: var(--text); }
+
+/* Stepper (shared) */
 .dice-stepper {
   display: flex;
   align-items: center;
@@ -1083,57 +1081,7 @@ img { max-width: 100%; display: block; }
   line-height: 36px;
 }
 
-.dice-pool-summary {
-  font-family: var(--font-ink);
-  font-size: 1.2rem;
-}
-
-.dice-mode-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.dice-mode-btn {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.dice-mode-btn:hover {
-  border-color: var(--text-light);
-  color: var(--text);
-}
-
-.dice-mode-btn--active {
-  background: var(--purple);
-  border-color: var(--purple);
-  color: #fff;
-}
-
-.dice-push-section {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px dashed var(--border);
-}
-
-.dice-push-hint {
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.8rem;
-  color: var(--text-light);
-  font-family: var(--font-sans);
-}
-
+/* Dice pool results */
 .dice-pool-results {
   display: flex;
   flex-wrap: wrap;
@@ -1149,7 +1097,6 @@ img { max-width: 100%; display: block; }
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: all 0.15s;
 }
 
 .dice-pool-result--chosen {
@@ -1157,9 +1104,7 @@ img { max-width: 100%; display: block; }
   background: var(--surface-raised);
 }
 
-.dice-pool-result--eliminated {
-  opacity: 0.35;
-}
+.dice-pool-result--eliminated { opacity: 0.35; }
 
 .dice-chosen-label {
   font-size: 0.7rem;
@@ -1169,6 +1114,7 @@ img { max-width: 100%; display: block; }
   color: var(--text-light);
 }
 
+/* Roll value display */
 .dice-result-rolls {
   font-family: var(--font-ink);
   font-size: 1.2rem;
@@ -1201,19 +1147,98 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-sans);
 }
 
-.dice-total {
-  margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
+/* Push history */
+.dice-push-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dice-push-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.dice-push-number {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  min-width: 3.5rem;
+}
+
+.dice-push-detriment {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #c53030;
+  background: #faeaea;
+  border: 1px solid #f5c6c6;
+  border-radius: 4px;
+  padding: 0.1rem 0.5rem;
+}
+
+/* Running total breakdown */
+.dice-running-total {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.dice-total-num {
+  font-family: var(--font-ink);
+  font-size: 1.3rem;
+}
+
+/* Outcome display */
+.dice-outcome {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border: 2px solid;
+}
+
+.dice-outcome--beneficial {
+  background: #eaf4ef;
+  border-color: #276749;
+  color: #1a4a30;
+}
+
+.dice-outcome--detrimental {
+  background: #faeaea;
+  border-color: #c53030;
+  color: #7a1a1a;
+}
+
+.dice-outcome--neutral {
+  background: var(--surface-raised);
+  border-color: var(--border);
   color: var(--text);
 }
 
-.dice-total strong,
-.dice-total-num {
+.dice-outcome-total {
   font-family: var(--font-ink);
-  font-size: 1.5rem;
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.dice-outcome-label {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.dice-outcome-detail {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  opacity: 0.75;
 }
 
 /* Grok hero orbs — orange glow against the purple bg */
