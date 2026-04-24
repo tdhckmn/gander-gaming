@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import heroSrc from '/assets/img/hero-gander-gaming.png';
+import riderSrc from '/assets/img/grok2e-rider.png';
 import { trackEvent } from '../utils/analytics.js';
 import { useSEO } from '../hooks/useSEO.js';
 
@@ -105,26 +106,12 @@ export default function Home() {
 
             <div className="divider" />
 
-            <div className="grid-2" style={{ gap: '2.5rem', alignItems: 'start' }}>
-              <div>
-                <blockquote style={{
-                  fontFamily: 'var(--font-ink)',
-                  fontSize: '1.15rem',
-                  fontStyle: 'italic',
-                  lineHeight: 1.7,
-                  color: 'var(--text)',
-                  borderLeft: '4px solid var(--orange)',
-                  paddingLeft: '1.5rem',
-                  margin: '0 0 2rem 0',
-                }}>
-                  "Since my first commercial release of the now platinum bestseller Grok?!, I've been committed
-                  to creating inspiring games, tools, and adventures, to help bring the imagined world in your
-                  head to the gaming table."
-                </blockquote>
-                <p style={{ color: 'var(--text-muted)', fontWeight: 600 }}>— Lester Burton, Founder</p>
-              </div>
+            <div className="grid-2" style={{ gap: '2.5rem', alignItems: 'center' }}>
+              {/* Left: Image */}
+              <img src={riderSrc} alt="Grok?! 2nd Edition" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: 'var(--radius-lg)', display: 'block' }} />
 
-              <div className="card card-raised">
+              {/* Right: Flagship text + CTAs */}
+              <div>
                 <span className="tag tag-purple" style={{ marginBottom: '1rem', display: 'inline-block' }}>Flagship Title</span>
                 <h2 style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>Grok?! 2nd Edition</h2>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
@@ -147,6 +134,23 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* Quote — full width beneath */}
+            <blockquote style={{
+              fontFamily: 'var(--font-ink)',
+              fontSize: '1.35rem',
+              fontStyle: 'italic',
+              lineHeight: 1.7,
+              color: 'var(--text)',
+              borderLeft: '4px solid var(--orange)',
+              paddingLeft: '1.5rem',
+              margin: '2.5rem 0 0.75rem',
+            }}>
+              "Since my first commercial release of the now platinum bestseller Grok?!, I've been committed
+              to creating inspiring games, tools, and adventures, to help bring the imagined world in your
+              head to the gaming table."
+            </blockquote>
+            <p style={{ color: 'var(--text-muted)', fontWeight: 600 }}>— Lester Burton, Founder</p>
           </div>
         </section>
 

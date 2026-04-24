@@ -1271,3 +1271,12 @@ img { max-width: 100%; display: block; }
   animation-delay: -7s;
   animation-duration: 14s;
 }
+
+/* ── Full-width panel images (Home, Grok) ────────────────────────────────── */
+.panel-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}

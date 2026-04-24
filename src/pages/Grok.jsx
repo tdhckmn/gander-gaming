@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import heroSrc from '/assets/img/hero-grok.png';
+import heroSrc          from '/assets/img/hero-grok.png';
+import monsterCastleSrc from '/assets/img/grok2e-monster-castle.png';
 import { trackEvent } from '../utils/analytics.js';
 import { useSEO } from '../hooks/useSEO.js';
 
@@ -105,6 +106,7 @@ export default function Grok() {
       {/* About */}
       <section className="section section-alt">
         <div className="container">
+          <img src={monsterCastleSrc} alt="A devolved monstrosity looms before a crumbling fortress on Planet Grok" className="panel-img" style={{ marginBottom: '2.5rem' }} />
           <div className="grid-2" style={{ gap: '3rem', alignItems: 'start' }}>
             <div>
               <h2 style={{ marginBottom: '1rem' }}>About the Game</h2>
