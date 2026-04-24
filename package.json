@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite build && firebase hosting:channel:deploy preview --expires 7d",
-    "deploy": "vite build && firebase deploy"
+    "build": "vite build && node scripts/gen-og-pages.js",
+    "preview": "vite build && node scripts/gen-og-pages.js && firebase hosting:channel:deploy preview --expires 7d",
+    "deploy": "vite build && node scripts/gen-og-pages.js && firebase deploy"
   },
   "dependencies": {
     "firebase": "^10.12.0",
