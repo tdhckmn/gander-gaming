@@ -9,6 +9,23 @@ export default function CharacterGenerator() {
   return (
     <div className="tool-section">
       <div className="tool-header">
+        <h2>Fillable Character Sheet</h2>
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+          The official Grok?! 2nd Edition character sheet — fill it out digitally or print it.
+        </p>
+      </div>
+      <a
+        href="/assets/pdf/Grok 2e Fillable Character Sheet.pdf"
+        download
+        className="btn btn-outline"
+        onClick={() => trackEvent('download_fillable_sheet')}
+      >
+        ↓ Download Character Sheet
+      </a>
+
+      <div className="divider" />
+
+      <div className="tool-header">
         <h2>Random Character</h2>
         <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
           Name, attributes, traits, and a full set of starting assets.
