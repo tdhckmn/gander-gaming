@@ -10,11 +10,11 @@ const DICE = [
 ];
 
 const OUTCOMES = [
-  { min: 1,  max: 2,        label: 'No, and…',  detail: 'something else Detrimental happens.', type: 'detrimental' },
-  { min: 3,  max: 4,        label: 'No, but…',  detail: 'something else Beneficial happens.',  type: 'beneficial'  },
-  { min: 5,  max: 6,        label: 'Yes, but…', detail: 'something else Detrimental happens.', type: 'detrimental' },
-  { min: 7,  max: 8,        label: 'Yes…',      detail: 'something as intended/expected happens.', type: 'neutral' },
-  { min: 9,  max: Infinity, label: 'Yes, and…', detail: 'something else Beneficial happens.',  type: 'beneficial'  },
+  { min: 1,  max: 2,        label: 'No, and…',  detail: 'something else Detrimental happens.', type: 'no'  },
+  { min: 3,  max: 4,        label: 'No, but…',  detail: 'something else Beneficial happens.',  type: 'no'  },
+  { min: 5,  max: 6,        label: 'Yes, but…', detail: 'something else Detrimental happens.', type: 'yes' },
+  { min: 7,  max: 8,        label: 'Yes…',      detail: 'something as intended/expected happens.', type: 'yes' },
+  { min: 9,  max: Infinity, label: 'Yes, and…', detail: 'something else Beneficial happens.',  type: 'yes' },
 ];
 
 function getOutcome(total) {

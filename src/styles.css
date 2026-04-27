@@ -1204,22 +1204,16 @@ img { max-width: 100%; display: block; }
   border: 2px solid;
 }
 
-.dice-outcome--beneficial {
+.dice-outcome--yes {
   background: #eaf4ef;
   border-color: #276749;
   color: #1a4a30;
 }
 
-.dice-outcome--detrimental {
+.dice-outcome--no {
   background: #faeaea;
   border-color: #c53030;
   color: #7a1a1a;
-}
-
-.dice-outcome--neutral {
-  background: var(--surface-raised);
-  border-color: var(--border);
-  color: var(--text);
 }
 
 .dice-outcome-total {
